@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta charset="utf-8" />
         <meta name="apple-mobile-web-app-title" content="Reminder Clock" />
         <link rel="apple-touch-icon" href="icons/icon.png" />
-        <link rel="icon" sizes="192x192" href="icons/icon.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="set="UTF-8" />
+        <link rel="icon" sizes="192x192" href="icons/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Reminder Clock</title>
         <link rel="icon" href="data:," />
         <link
@@ -21,9 +21,10 @@
             <div id="clockContent">
                 <div id="day">Monday</div>
                 <div id="periodOfDay">Morning</div>
-                <div id="clock">00:00:00</div>
+                <div id="clock">00<span>:</span>00<span>:</span>00</div>
             </div>
             <div id="messageContainer">
+                <button id="closeMessageBtn" class="close-button"></button>
                 <div id="message">Sample Message</div>
                 <img id="messageImage" src="" alt="Reminder Image" />
                 <div id="messageTime">Started at: --:--</div>

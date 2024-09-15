@@ -13,6 +13,7 @@ const dayWallpapers = ["wallpapers/day0.jpg", "wallpapers/day1.jpg"];
 const nightWallpapers = ["wallpapers/night0.jpg", "wallpapers/night1.jpg"];
 
 let currentWallpaperIndex = 0;
+let currentReminder = null;
 
 // Reminders Data
 let reminders = [];
@@ -23,11 +24,14 @@ let comforts = [];
 // Global variables
 var messageTimeout = null;
 var clicks = 0;
+var dismissedReminders = {};
 
 // DOM Elements
 const settingsButton = document.getElementById("settings");
 const dashboard = document.getElementById("dashboard");
 const closeDashboardBtn = document.getElementById("closeDashboardBtn");
+const closeMessageBtn = document.getElementById("closeMessageBtn");
+const messageContainer = document.getElementById("messageContainer");
 
 // Utility Functions
 function isDayTime() {
@@ -52,7 +56,7 @@ function updateClock() {
   const hours = String(now.getHours()).padStart(2, "0");
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
-  clock.textContent = `${hours}:${minutes}:${seconds}`;
+  clock.innerHTML = `${hours}<span>:</span>${minutes}<span>:</span>${seconds}`;
 
   const days = [
     "Sunday",
@@ -116,6 +120,18 @@ function checkReminders() {
     var endTime = new Date(
       startTime.getTime() + (reminder.duration || DEFAULT_DURATION),
     );
+
+    // Generate a unique key for the reminder
+    var reminderKey = `${reminder.time}-${reminder.message}`;
+
+    // Skip the reminder if it has been dismissed and the dismissal hasn't expired
+    if (
+      dismissedReminders[reminderKey] &&
+      dismissedReminders[reminderKey] > now.getTime()
+    ) {
+      return; // Skip this reminder
+    }
+
     if (startTime <= now && now <= endTime) {
       showMessage(reminder);
     }
@@ -129,6 +145,8 @@ function showMessage(reminder) {
   const messageImage = document.getElementById("messageImage");
   const reminderTime = reminder.time.split(":");
   const timeStr = `${reminderTime[0]}:${reminderTime[1]}`;
+
+  currentReminder = reminder;
 
   message.textContent = reminder.message;
   messageTime.textContent = `Due: ${timeStr}`;
@@ -214,12 +232,55 @@ function showComfort() {
   }, 45000);
 }
 
+function cleanUpDismissedReminders() {
+  const now = new Date().getTime();
+  for (let key in dismissedReminders) {
+    if (dismissedReminders[key] <= now) {
+      delete dismissedReminders[key];
+    }
+  }
+}
+
 // Event Listeners
 document.addEventListener("click", function () {
   clicks++;
   if (clicks >= 5) {
     settingsButton.style.display = "block";
   }
+});
+
+messageContainer.addEventListener("click", function (event) {
+  messageContainer.classList.add("show-close-button");
+  // Prevent the click event from bubbling up to the body
+  event.stopPropagation();
+});
+
+closeMessageBtn.addEventListener("click", function (event) {
+  // Hide the message container
+  document.body.classList.remove("message-shown");
+  // Hide the close button
+  messageContainer.classList.remove("show-close-button");
+
+  // Clear any existing timeout to prevent the message from reappearing
+  if (messageTimeout !== null) {
+    clearTimeout(messageTimeout);
+    messageTimeout = null;
+  }
+
+  // Record the dismissal
+  const now = new Date();
+  const reminderEndTime =
+    now.getTime() + (currentReminder.duration || DEFAULT_DURATION);
+  var reminderKey = `${currentReminder.time}-${currentReminder.message}`;
+  dismissedReminders[reminderKey] = reminderEndTime;
+
+  // Prevent the click event from bubbling up
+  event.stopPropagation();
+});
+
+// Hide the close button when clicking anywhere else on the page
+document.body.addEventListener("click", function () {
+  messageContainer.classList.remove("show-close-button");
 });
 
 settingsButton.addEventListener("click", function () {
@@ -241,3 +302,4 @@ setInterval(changeWallpaper, 15 * 60 * 1000); // Change wallpaper every 15 minut
 setInterval(updateClock, 1000); // Update clock every second
 setInterval(checkReminders, 60000); // Check reminders every minute
 setInterval(showComfort, 60000); // Show comfort message every minute
+setInterval(cleanUpDismissedReminders, 60000);
