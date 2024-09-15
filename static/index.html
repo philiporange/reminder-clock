@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="Reminder Clock" />
+        <link rel="apple-touch-icon" href="/icons/icon.png" />
+        <meta name="set="UTF-8" />
+        <title>Reminder Clock</title>
+        <link rel="icon" href="data:," />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+        />
+        <link rel="stylesheet" href="/style.css" />
+        <script src="/index.js" defer></script>
+        <script src="/dashboard.js" defer></script>
+    </head>
+    <body>
+        <div id="clockContainer">
+            <div id="clockContent">
+                <div id="day">Monday</div>
+                <div id="periodOfDay">Morning</div>
+                <div id="clock">00:00:00</div>
+            </div>
+            <div id="messageContainer">
+                <div id="message">Sample Message</div>
+                <img id="messageImage" src="" alt="Reminder Image" />
+                <div id="messageTime">Started at: --:--</div>
+            </div>
+        </div>
+        <div id="settings" class="button is-light">Settings</div>
+        <div id="comfortMessage"></div>
+        <div id="warning">
+            Always double-check and think carefully before following any
+            health-related reminders.
+        </div>
+
+        <section id="dashboard" class="section overlay">
+            <div class="container">
+                <h2 class="title">Reminders Dashboard</h2>
+                <button
+                    id="closeDashboardBtn"
+                    class="button is-danger is-light"
+                >
+                    Close
+                </button>
+                <button id="addReminderBtn" class="button is-primary">
+                    Add Reminder
+                </button>
+                <div class="table-container">
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Message</th>
+                                <th>Duration (minutes)</th>
+                                <th>Icon</th>
+                                <th>Flashing</th>
+                                <th>Color</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="remindersTable">
+                            <!-- Reminders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div id="reminderFormModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Reminder</p>
+                    <button
+                        class="delete modal-close"
+                        aria-label="close"
+                    ></button>
+                </header>
+                <form id="reminderForm">
+                    <section class="modal-card-body">
+                        <div class="field">
+                            <label class="label">Time (HH:MM)</label>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="time"
+                                    name="time"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="text"
+                                    name="message"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Duration (minutes)</label>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="number"
+                                    name="duration"
+                                    min="1"
+                                    step="1"
+                                />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Icon</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="icon">
+                                        <option value="">None</option>
+                                        <option value="sleep">Sleep</option>
+                                        <option value="pill">Pill</option>
+                                        <option value="food">Food</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox" name="flashing" />
+                                Flashing
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="label">Color</label>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="color"
+                                    name="color"
+                                />
+                            </div>
+                        </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button type="submit" class="button is-success">
+                            Save
+                        </button>
+                        <button type="button" class="button cancel-button">
+                            Cancel
+                        </button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
