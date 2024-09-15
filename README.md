@@ -16,6 +16,10 @@ Reminder Clock is a web-based application designed to display the current time a
 
 Reminder Clock can be dangerous if misused or overly relied upon. Always double-check and think carefully before following any health-related reminders. This tool should be used in conjunction with proper medical advice and supervision.
 
+## Demo
+
+A live demo of Reminder Clock is available at [https://philiporange.github.io/reminder-clock/static/](https://philiporange.github.io/reminder-clock/static/).
+
 ## Setup
 
 1. Clone the repository
