@@ -3,14 +3,14 @@ const DEFAULT_DURATION = 3600000; // 1 hour in milliseconds
 const DEFAULT_REMINDER_COLOR = "#ff0000";
 
 const icons = {
-  sleep: "/icons/sleep.svg",
-  pill: "/icons/pill.svg",
-  food: "/icons/food.svg",
+  sleep: "icons/sleep.svg",
+  pill: "icons/pill.svg",
+  food: "icons/food.svg",
 };
 
 // Wallpaper list
-const dayWallpapers = ["/wallpapers/day0.jpg", "/wallpapers/day1.jpg"];
-const nightWallpapers = ["/wallpapers/night0.jpg", "/wallpapers/night1.jpg"];
+const dayWallpapers = ["wallpapers/day0.jpg", "wallpapers/day1.jpg"];
+const nightWallpapers = ["wallpapers/night0.jpg", "wallpapers/night1.jpg"];
 
 let currentWallpaperIndex = 0;
 
