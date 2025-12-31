@@ -1,0 +1,92 @@
+{
+  "name": "reminder_clock",
+  "short_description": "A web-based digital clock application with customizable time-based reminders and comfort messages.",
+  "long_description": "Reminder Clock is a web-based application designed to display the current time with a large digital clock interface and provide customizable reminders for time-sensitive activities such as medication, meals, or other routine tasks. The application features a hidden settings dashboard accessible via click interactions, allowing users to create, edit, and delete reminders with customizable properties including time, message, duration, icons, visual effects, and colors. It includes day/night wallpaper transitions, random comfort messages for emotional support, and persistent storage using browser localStorage. The reminder system displays alerts at scheduled times with visual indicators and sound-capable notifications, making it particularly useful for elderly individuals or those requiring regular prompts for daily activities.",
+  "keywords": [
+    "web-application",
+    "reminder-system",
+    "healthcare-utility",
+    "time-tracking",
+    "javascript",
+    "responsive-design",
+    "client-side-storage",
+    "accessibility",
+    "kiosk-mode",
+    "elderly-care",
+    "medication-reminders",
+    "daily-tasks",
+    "ui-ux"
+  ],
+  "primary_language": "JavaScript",
+  "languages": [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Bash"
+  ],
+  "frameworks": [
+    "Bulma CSS Framework",
+    "Python http.server",
+    "Chromium browser"
+  ],
+  "modules": [
+    {
+      "path": "static/index.js",
+      "description": "Main application logic handling clock display, reminder checking, wallpaper transitions, comfort messages, and event management."
+    },
+    {
+      "path": "static/dashboard.js",
+      "description": "Reminder management interface with CRUD operations for reminders including form validation and localStorage persistence."
+    },
+    {
+      "path": "static/style.css",
+      "description": "Complete styling for the application including responsive layout, animations, dark overlay dashboard, and dynamic message containers."
+    },
+    {
+      "path": "static/index.html",
+      "description": "Main HTML structure with semantic markup, embedded Bulma CSS framework, and form elements for reminder configuration."
+    },
+    {
+      "path": "serve.sh",
+      "description": "Bash script to serve static files using Python's built-in HTTP server with auto-restart on failure."
+    },
+    {
+      "path": "kiosk.sh",
+      "description": "Bash script to launch the application in Chromium kiosk mode for dedicated display use."
+    },
+    {
+      "path": "static/icons/pill.svg",
+      "description": "SVG icon for medication/pill reminders."
+    },
+    {
+      "path": "static/icons/food.svg",
+      "description": "SVG icon for meal/food reminders."
+    },
+    {
+      "path": "static/icons/sleep.svg",
+      "description": "SVG icon for sleep/rest reminders."
+    },
+    {
+      "path": "static/wallpapers/",
+      "description": "Directory containing day and night themed background images that rotate every 15 minutes."
+    },
+    {
+      "path": "static/fonts/",
+      "description": "Custom fonts directory with Digital-7 monospace, Harmony, and Adelia fonts for typography."
+    }
+  ],
+  "git": {
+    "is_repo": true,
+    "remote_url": "https://github.com/philiporange/reminder-clock.git",
+    "github_name": "philiporange/reminder-clock",
+    "default_branch": "main",
+    "last_commit": "2024-09-15T09:49:23+01:00"
+  },
+  "stats": {
+    "files": 24,
+    "lines_of_code": 468,
+    "size_bytes": 4256611
+  },
+  "generated_at": "2025-12-06T23:06:55.308441",
+  "generator_version": "1.0.0"
+}
