@@ -1,21 +1,22 @@
 {
-  "name": "reminder_clock",
-  "short_description": "A web-based digital clock application with customizable time-based reminders and comfort messages.",
-  "long_description": "Reminder Clock is a web-based application designed to display the current time with a large digital clock interface and provide customizable reminders for time-sensitive activities such as medication, meals, or other routine tasks. The application features a hidden settings dashboard accessible via click interactions, allowing users to create, edit, and delete reminders with customizable properties including time, message, duration, icons, visual effects, and colors. It includes day/night wallpaper transitions, random comfort messages for emotional support, and persistent storage using browser localStorage. The reminder system displays alerts at scheduled times with visual indicators and sound-capable notifications, making it particularly useful for elderly individuals or those requiring regular prompts for daily activities.",
+  "name": "reminder-clock",
+  "short_description": "Web-based digital clock application with customizable time-based reminders for medication, meals, and daily tasks.",
+  "long_description": "Reminder Clock is a progressive web application that displays a prominent digital clock interface alongside a comprehensive reminder system. Users can create, edit, and delete time-based reminders with customizable properties including message text, duration, visual icons (pill, food, sleep), color highlighting, and flashing animations. The application stores reminders locally using browser localStorage and automatically displays alerts at scheduled times with visual effects and optional sound support. Additional features include randomly-displayed comfort messages for emotional support, automatic day/night wallpaper transitions every 15 minutes, and a hidden settings dashboard accessible via five-click interaction. Designed with accessibility in mind, it supports both regular browser use and dedicated kiosk mode for display on tablets or devices used by elderly individuals or anyone requiring reliable daily task reminders.",
   "keywords": [
-    "web-application",
     "reminder-system",
+    "web-application",
     "healthcare-utility",
-    "time-tracking",
+    "digital-clock",
+    "elderly-care",
+    "medication-reminders",
+    "daily-tasks",
+    "progressive-web-app",
     "javascript",
     "responsive-design",
     "client-side-storage",
     "accessibility",
     "kiosk-mode",
-    "elderly-care",
-    "medication-reminders",
-    "daily-tasks",
-    "ui-ux"
+    "wellness-tool"
   ],
   "primary_language": "JavaScript",
   "languages": [
@@ -32,61 +33,46 @@
   "modules": [
     {
       "path": "static/index.js",
-      "description": "Main application logic handling clock display, reminder checking, wallpaper transitions, comfort messages, and event management."
+      "description": "Main application logic with clock display updates, reminder checking, wallpaper rotation, comfort messages, and event handling."
     },
     {
       "path": "static/dashboard.js",
-      "description": "Reminder management interface with CRUD operations for reminders including form validation and localStorage persistence."
-    },
-    {
-      "path": "static/style.css",
-      "description": "Complete styling for the application including responsive layout, animations, dark overlay dashboard, and dynamic message containers."
+      "description": "Interactive reminder management with create, read, update, delete operations via modal forms and localStorage persistence."
     },
     {
       "path": "static/index.html",
-      "description": "Main HTML structure with semantic markup, embedded Bulma CSS framework, and form elements for reminder configuration."
+      "description": "Semantic HTML structure including clock display, reminder alert container, settings button, dashboard overlay, and form modal for reminder configuration."
+    },
+    {
+      "path": "static/style.css",
+      "description": "Complete styling with responsive layout, custom fonts, animations (wallpaper fade, flashing borders, fade-in comfort messages), and dark overlay UI."
     },
     {
       "path": "serve.sh",
-      "description": "Bash script to serve static files using Python's built-in HTTP server with auto-restart on failure."
+      "description": "Bash script to serve static files via Python http.server on port 9999 with automatic restart on failure."
     },
     {
       "path": "kiosk.sh",
-      "description": "Bash script to launch the application in Chromium kiosk mode for dedicated display use."
+      "description": "Bash script to launch Chromium browser in kiosk mode for dedicated display use with auto-respawn capability."
     },
     {
-      "path": "static/icons/pill.svg",
-      "description": "SVG icon for medication/pill reminders."
-    },
-    {
-      "path": "static/icons/food.svg",
-      "description": "SVG icon for meal/food reminders."
-    },
-    {
-      "path": "static/icons/sleep.svg",
-      "description": "SVG icon for sleep/rest reminders."
+      "path": "static/icons/",
+      "description": "Directory of SVG reminder icons: pill (medication), food (meals), sleep (rest), plus application icon.png."
     },
     {
       "path": "static/wallpapers/",
-      "description": "Directory containing day and night themed background images that rotate every 15 minutes."
+      "description": "Background images directory with day and night themed JPG files that rotate based on time of day."
     },
     {
       "path": "static/fonts/",
-      "description": "Custom fonts directory with Digital-7 monospace, Harmony, and Adelia fonts for typography."
+      "description": "Custom font files including Digital-7 (monospace and regular) for clock display, Harmony for headers, and Adelia for comfort messages."
     }
   ],
   "git": {
-    "is_repo": true,
-    "remote_url": "https://github.com/philiporange/reminder-clock.git",
-    "github_name": "philiporange/reminder-clock",
-    "default_branch": "main",
-    "last_commit": "2024-09-15T09:49:23+01:00"
+    "repository": "https://github.com/philiporange/reminder-clock",
+    "is_git_repo": true
   },
-  "stats": {
-    "files": 24,
-    "lines_of_code": 468,
-    "size_bytes": 4256611
-  },
-  "generated_at": "2025-12-06T23:06:55.308441",
-  "generator_version": "1.0.0"
+  "author": "Philip Orange <git@philiporange.com>",
+  "license": "CC0-1.0",
+  "version": "0.1.0"
 }
